@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>{Title}</title>
+    <meta name="viewport" content="width=320"/>
+    <link rel="shortcut icon" href="{Favicon}" />
+    <link rel="apple-touch-icon-precomposed" href="{PortraitURL-128}"/>
+    {block:Description}<meta name="description" content="{MetaDescription}" />{/block:Description}
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+            background: url('http://assets.tumblr.com/images/iphone/tumblelog/bg.png') top left repeat #757778;
+            font-family: Helvetica, Arial, sans-serif;
+        }
+        
+        .clear {
+            clear: both;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+            word-wrap: break-word;
+        }
+        
+        header {
+            display: block;
+            background: url('http://assets.tumblr.com/images/iphone/tumblelog/toolbar_bg.png') top left repeat-x #6d84a2;
+            border-bottom: 1px solid #363d4a;
+            text-align: center;
+            font-weight: bold;
+            font-size: 18px;
+            color: #fff;
+            padding: 10px 0;
+            text-shadow: 0 -1px 0 #667287;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        
+            header a.avatar {
+                display: block;
+                position: absolute;
+                top: 6px;
+                left: 5px;
+                width: 28px;
+                height: 27px;
+                background: url('{PortraitURL-30}') center no-repeat #465772;
+                border-top: 1px solid #515a6a;
+                border-bottom: 1px solid #b5bbc9;
+                -webkit-border-radius: 3px;
+                -moz-border-radius: 3px;
+                border-radius: 3px;
+            }
+            
+            header #post_pagination {
+                background: url('http://assets.tumblr.com/images/iphone/tumblelog/toolbar_browse_post_pagination_inactive.png') top left repeat-y transparent;
+                position: absolute;
+                top: 7px;
+                left: 8px;
+                width: 76px;
+                height: 27px;
+            }
+            
+                header #post_pagination a.left {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                }
+                
+                header #post_pagination a.right {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                }
+        
+        .bubble {
+            display: block;
+            width: 304px;
+            margin: 10px auto 0 auto;
+            overflow: hidden;
+        }
+            
+            .bubble .top {
+                background: url('http://assets.tumblr.com/images/iphone/tumblelog/content_top.png') top left repeat-y transparent;
+                width: 304px;
+                height: 17px;
+                margin: 0 auto;
+            }
+            
+            .bubble .content {
+                background: url('http://assets.tumblr.com/images/iphone/tumblelog/content_bg.png') top left repeat-y transparent;
+                width: 264px;
+                margin: 0 auto;
+                padding: 0 20px;
+            }
+
+            .bubble .content.bleed {
+                width: 300px;
+                padding: 0 2px;
+            }
+                
+                .bubble .content img {
+                    display: block;
+                    border: 2px solid #fff;
+                    max-width: 260px;
+                    height: auto;
+                }
+                
+                .bubble .content .copy {
+                    font-size: 13px;
+                    color: #333536;
+                }
+                    
+                    .bubble .content .copy a {
+                        text-decoration: underline;
+                    }
+                    
+                    .bubble .content h2 {
+                        color: #535456;
+                        font-size: 18px;
+                        line-height: 20px;
+                        margin: 0;
+                        padding: 0;
+                    }
+                    
+                    .bubble .content .copy p {
+                        margin: 10px 0;
+                    }
+                    
+                    .bubble .content .copy.text_post p:first-child {
+                        margin-top: 0;
+                    }
+                    
+                    .bubble .content .copy p:last-child {
+                        margin-bottom: 0;
+                    }
+                    
+                    .bubble .content .copy blockquote {
+                        margin: 10px 0px 10px 10px;
+                        padding-left: 15px;
+                        border-left: solid 3px #c9cccf;
+                    }
+                    
+                    .bubble .content .copy img {
+                        max-width: 100%;
+                    }
+                    
+                    .bubble .content .video {
+                        font-size: 13px;
+                        color: #333536;
+                        padding-top: 6px;
+                    }
+                    
+                        .bubble .content .video div {
+                            width: 260px;
+                            border: 2px solid #fff;
+                            margin: 0 auto;
+                        }
+                        
+                        .bubble .content .video a {
+                            margin: 0 auto;
+                        }
+                        
+                            .bubble .content .video a img {
+                                width: 100%;
+                                height: auto;
+                            }
+                            
+                            .bubble .content .video a div {
+                                border: none;
+                            }
+                        
+                        .bubble .content .video embed,
+                        .bubble .content .video object {
+                            width: 264px;
+                            height: auto;
+                        }
+                        
+                        .bubble .content .video .html_photoset {
+                            text-align: center;
+                            border: none;
+                        }
+                                                
+                            .bubble .content .video .html_photoset p {
+                                margin: 15px 0;
+                            }
+                            
+                            .bubble .content .video .html_photoset p:first-child {
+                                margin-top: 0;
+                            }
+                            
+                                .bubble .content .video .html_photoset p img.photoset_photo {
+                                    margin: 0 auto;
+                                    border: 2px solid #fff;
+                                }
+                                
+                                .bubble .content .video .html_photoset p.photoset_caption {
+                                    margin-top: 10px;
+                                }
+                    
+                    .bubble .content .link {
+                        display: block;
+                        font-size: 16px;
+                        line-height: 18px;
+                        font-weight: bold;
+                        color: #49729a;
+                    }
+                    
+                        .bubble .content .link span {
+                            font-family: 'Lucida Grande', sans-serif;
+                            vertical-align: -1px
+                        }
+                    
+                    .bubble .content .quote {
+                        font-size: 16px;
+                        line-height: 18px;
+                        font-weight: bold;
+                        color: #535456;
+                    }
+                    
+                        .bubble .content .quote_source *:first-child {
+                            margin-top: 0;
+                        }
+                    
+                    .bubble .content .audio {
+                        margin-top: 0;
+                    }
+                    
+                    .bubble .content .audio img {
+                        display: inline-block;
+                        border: none;
+                        width: 18px;
+                        height: 18px;
+                        position: relative;
+                        top: 4px;
+                        margin-right: 4px;
+                    }
+                    
+                    .bubble .content .audio a {
+                        font-weight: bold;
+                    }
+                    
+                    .bubble .content .video img {
+                        border: none;
+                    }
+                
+                .bubble .content .chat {
+                    width: 100%;
+                    margin: 0;
+                    border-top: 1px solid #dde2e7;
+                    border-bottom: 1px solid #fff;
+                }
+                
+                    .bubble .content .chat td {
+                        padding: 8px 0;
+                        border-top: 1px solid #fff;
+                        border-bottom: 1px solid #dde2e7;
+                        vertical-align: top;
+                        font-size: 13px;
+                        color: #333536;
+                    }
+                    
+                    .bubble .content .chat td.username {
+                        padding-right: 12px;
+                        font-weight: bold;
+                        max-width: 115px;
+                    }
+                
+                .bubble .content .answer_question {
+                    background: #e4e7ea;
+                    -webkit-border-radius: 8px;
+                    -moz-border-radius: 8px;
+                    border-radius: 8px;
+                    border-top: 1px solid #c6cdd4;
+                    border-bottom: 1px solid #fff;
+                    padding: 13px 15px;
+                    font-size: 16px;
+                    line-height: 19px;
+                    color: #535355;
+                    word-wrap: break-word;
+                }
+                
+                .bubble .content .answer_asker {
+                    margin-top: 12px;
+                    font-weight: bold;
+                    font-size: 14px;
+                    color: #65676a;
+                }
+                
+                    .bubble .content .answer_asker img {
+                        display: inline-block;
+                        border: none;
+                        vertical-align: -7px;
+                        margin: 0 7px 0 10px;
+                    }
+                
+                .bubble .content .date,
+                .bubble .content .note_count {
+                    float: left;
+                    font-weight: bold;
+                    font-size: 12px;
+                    color: #8c8e90;
+                    margin-top: 13px;
+                    text-decoration: underline;
+                }
+                
+                .bubble .content .note_count {
+                    float: right;
+                }
+                
+                .bubble .content ol.notes {
+                    margin: 0;
+                    padding: 0;
+                    list-style-type: none;
+                    font-size: 12px;
+                    border-top: 1px solid #dde2e7;
+                    border-bottom: 1px solid #fff;
+                }
+                
+                    .bubble .content ol.notes li.note {
+                        padding: 10px 30px 10px 10px;
+                        border-top: 1px solid #fff;
+                        border-bottom: 1px solid #dde2e7;
+                    }
+                    
+                        .bubble .content ol.notes li.note img.avatar {
+                            display: inline-block;
+                            vertical-align: -5px;
+                            margin-right: 6px;
+                            width: 16px;
+                            height: 16px;
+                        }
+                        
+                        .bubble .content ol.notes li.note span.action {
+                            font-weight: normal;
+                        }
+                        
+                        .bubble .content ol.notes li.note .answer_content {
+                            font-weight: normal;
+                        }
+                        
+                        .bubble .content ol.notes li.note blockquote {
+                            border-left: 3px solid #c9cccf;
+                            padding: 1px 10px;
+                            margin: 10px 0px 0px 25px;
+                        }
+                            
+                            .bubble .content ol.notes li.note blockquote a {
+                                text-decoration: none;
+                            }
+                        
+                        .bubble .content ol.notes li.note .tumblelog,
+                        .bubble .content ol.notes li.note .source_tumblelog {
+                            font-weight: bold;
+                            color: #303132;
+                        }
+                        
+                    .bubble .content ol.notes li.like {
+                        background: url('http://assets.tumblr.com/images/note_like.png') 273px 14px no-repeat;
+                    }
+                    
+                    .bubble .content ol.notes li.reblog {
+                        background: url('http://assets.tumblr.com/images/note_reblog.png') 273px 12px no-repeat;
+                    }
+                    
+                    .bubble .content ol.notes li.answer {
+                        background: url('http://assets.tumblr.com/images/note_answer.png') 275px 11px no-repeat;
+                    }
+                    
+                    .bubble .content ol.notes li.facebook_comment {
+                        background: url('http://assets.tumblr.com/images/note_facebook_2.png') 272px 12px no-repeat;
+                    }
+                    
+                    .bubble .content ol.notes li.photo,
+                    .bubble .content ol.notes li.reply {
+                        background: url('http://assets.tumblr.com/images/note_reply.png') 272px 12px no-repeat;
+                    }
+            
+            .bubble .bottom {
+                background: url('http://assets.tumblr.com/images/iphone/tumblelog/content_bottom.png') bottom left repeat-y transparent;
+                width: 304px;
+                height: 18px;
+                margin: 0 auto;
+            }
+        
+        #pagination {
+            background: url('http://assets.tumblr.com/images/iphone/tumblelog/pagination_bg.png') top left repeat-x #2c2d2e;
+            margin-top: 12px;
+            text-align: center;
+            font-size: 13px;
+            padding: 16px 15px;
+        }
+            
+            #pagination img {
+                vertical-align: -1px;
+                margin-right: 5px;
+            }
+            
+            #pagination a, #pagination span{
+                display: inline-block;
+                color: #7a7a7c;
+                border-bottom: 1px solid #7a7a7c;
+            }
+            
+            #pagination #load_more,
+            #pagination #loading_more {
+                font-size: 18px;
+                font-weight: bold;
+                color: #ebeef1;
+                border: none;
+                margin-bottom: 15px;
+            }
+    </style>
+    <script type="text/javascript" charset="utf-8">
+        setTimeout(function() { window.scrollTo(0,1) }, 100);
+                
+        function microAjax(B,A) {
+            this.bindFunction = function(E,D){
+                return function(){
+                    return E.apply(D,[D])
+                }
+            };
+
+            this.stateChange = function(D){
+                if (this.request.readyState == 4) {
+                    this.callbackFunction(this.request.responseText);
+                }
+            };
+
+            this.getRequest = function(){
+                if (window.ActiveXObject) {
+                    return new ActiveXObject("Microsoft.XMLHTTP");
+                } else {
+                    if (window.XMLHttpRequest) {
+                        return new XMLHttpRequest();
+                    }
+                }
+
+                return false;
+            };
+
+            this.postBody = (arguments[2] || '');
+            this.callbackFunction = A;
+            this.url = B;
+            this.request = this.getRequest();
+
+            if (this.request) {
+                var C = this.request;
+                C.onreadystatechange = this.bindFunction(this.stateChange, this);
+
+                if (this.postBody !== '') {
+                    C.open("POST", B, true);
+                    C.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+                    C.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                    C.setRequestHeader("Connection", "close");
+                } else {
+                    C.open("GET", B, true);
+                }
+
+                C.send(this.postBody);
+            }
+        }
+        
+        function $(id) {
+            return document.getElementById(id);
+        }
+        
+        var loading_next_page = false;
+        var next_page = 1;
+        var current_url;
+                
+        function load_more_posts() {
+            if (loading_next_page) return;
+            loading_next_page = true;
+            
+            $('loading_more').style.display = 'inline-block';
+            $('load_more').style.display = 'none';
+            
+            if (! current_url) current_url = document.location.href;
+            if (next_page === 1) current_url += 'page/1';
+            
+            current_url = current_url.replace('page/' + next_page, 'page/' + ++next_page);
+            
+            microAjax(current_url, function(res) {
+                $('posts').innerHTML += res.split('<!-- START' + ' POSTS -->')[1].split('<!-- END' + ' POSTS -->')[0];
+                $('loading_more').style.display = 'none';
+                $('load_more').style.display = 'inline-block';
+                loading_next_page = false;
+            });
+        }
+        
+        function show_notes(post_id, notes_url) {
+            if ($('notes_' + post_id).innerHTML == '') {
+                var old_innerHTML =  $('show_notes_' + post_id).innerHTML;
+                $('show_notes_' + post_id).innerHTML = 'Loading notes...';
+                
+                microAjax(notes_url, function(res) {
+                    $('show_notes_' + post_id).innerHTML = old_innerHTML;
+                    
+                    $('notes_' + post_id).innerHTML = res;
+                    $('notes_container_' + post_id).style.display = 'inherit';
+                    
+                    $('show_notes_' + post_id).style.display = 'none';
+                    $('hide_notes_' + post_id).style.display = 'inherit';
+                });
+            } else {
+                $('notes_container_' + post_id).style.display = 'inherit';
+                
+                $('show_notes_' + post_id).style.display = 'none';
+                $('hide_notes_' + post_id).style.display = 'inherit';
+            }
+        }
+        
+        function hide_notes(post_id) {
+            $('show_notes_' + post_id).style.display = 'inherit';
+            $('hide_notes_' + post_id).style.display = 'none';
+            $('notes_container_' + post_id).style.display = 'none';
+        }
+        
+        function strip_anchors(input) {
+            return input.replace(/<a /g, '<u ').replace(/<\/a>/g, '<\/u>');
+        }
+    </script>
+ </head>
+ <body>
+    <header>
+        <a href="/">{Title}</a>
+        {block:IndexPage}
+            <a href="/" class="avatar"></a>
+        {/block:IndexPage}
+        {block:PermalinkPage}
+            {block:PermalinkPagination}
+                <div id="post_pagination">
+                    {block:PreviousPost}<a href="{PreviousPost}" class="left"><img src="http://assets.tumblr.com/images/iphone/tumblelog/toolbar_browse_left.png"></a>{/block:PreviousPost}
+                    {block:NextPost}<a href="{NextPost}" class="right"><img src="http://assets.tumblr.com/images/iphone/tumblelog/toolbar_browse_right.png"></a>{/block:NextPost}
+                </div>
+            {/block:PermalinkPagination}
+        {/block:PermalinkPage}
+    </header>
+
+    <div id="posts">
+        <!-- START POSTS -->
+        {block:Posts}
+            <div class="bubble">
+                <div class="top"></div>
+                <div class="content">
+
+                    {block:Text}
+                        <div class="copy text_post">
+                            {block:Title}<h2>{Title}</h2>{/block:Title}
+                            {Body}
+                        </div>
+                    {/block:Text}
+
+                    {block:Photo}
+                        <img src="{PhotoURL-400}" alt="{PhotoAlt}" />
+                        {block:Caption}
+                            <div class="copy">
+                                {Caption}
+                            </div>
+                        {/block:Caption}
+                    {/block:Photo}
+
+                    {block:Photoset}
+                        <div class="video">
+                            {Photoset-400}
+                        </div>
+                        {block:Caption}
+                            <div class="copy">
+                                {Caption}
+                            </div>
+                        {/block:Caption}
+                    {/block:Photoset}
+
+                    {block:Link}
+                        <a href="{URL}" class="link" {Target}>{Name} <span>&rarr;</span></a>
+                        {block:Description}
+                            <div class="copy">
+                                {Description}
+                            </div>
+                        {/block:Description}
+                    {/block:Link}
+
+                    {block:Quote}
+                        <div class="quote">&#8220;{Quote}&#8221;</div>
+                        {block:Source}
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0">
+                                <tr>
+                                    <td valign="top" style="width:1px; padding:0 10px 0 0">
+                                        &mdash;
+                                    </td>
+                                    <td valign="top" class="copy quote_source">
+                                        {Source}
+                                    </td>
+                                </tr>
+                            </table>
+                        {/block:Source}
+                    {/block:Quote}
+
+                    {block:Audio}
+                        {block:AlbumArt}
+                            <img src="{AlbumArtURL}">
+                        {/block:AlbumArt}
+                        <a class="audio" href="{RawAudioURL}">
+                            <strong><img src="http://assets.tumblr.com/images/listen_icon.png?2" alt="Listen"/> <u>Listen</u></strong>
+                        </a>
+                        {block:Caption}
+                            <div class="copy">
+                                {Caption}
+                            </div>
+                        {/block:Caption}
+                    {/block:Audio}
+
+                    {block:Video}
+                        <div class="video"> 
+                            {Video-400}
+                        </div>
+                        {block:Caption}
+                            <div class="copy">
+                                {Caption}
+                            </div>
+                        {/block:Caption}
+                    {/block:Video}
+
+                    {block:Chat}
+                        {block:Title}<h2 style="margin-bottom:13px;">{Title}</h2>{/block:Title}
+                        <table class="chat" border="0" cellpadding="0" cellspacing="0">
+                            {block:Lines}
+                                <tr>
+                                    {block:Label}<td class="username">{Label}</td>{/block:Label}
+                                    <td width="*">{Line}</td>
+                                </tr>
+                            {/block:Lines}
+                        </table>
+                    {/block:Chat}
+
+                    {block:Answer}
+                        <div class="answer_question">{Question}</div>
+                        <div class="answer_asker">
+                            <img src="{AskerPortraitURL-24}" width="24" height="24" />{Asker}
+                        </div>
+                        <div class="copy">
+                            {Answer}
+                        </div>
+                    {/block:Answer}
+
+                    {block:Date}
+                        <a class="date" href="{Permalink}" {Target}>
+                            {TimeAgo}
+                        </a>
+                    {/block:Date}
+                    {block:NoteCount}
+                        <a href="{Permalink}" class="note_count" onclick="show_notes({PostID}, '{PostNotesURL}'); return false;" id="show_notes_{PostID}" {Target} style="padding-left:3px;">
+                            {NoteCountWithLabel}
+                        </a>
+                        <a href="#" class="note_count" onclick="hide_notes({PostID}); return false;" id="hide_notes_{PostID}" style="display: none; padding-left:3px;">
+                             Hide notes
+                        </a>
+                    {/block:NoteCount}
+<!--IF DISQUS---
+                    {block:Date}<a href="{Permalink}#disqus_thread" class="note_count" style="padding-left:3px;">comments</a>{/block:Date}
+----ENDIF DISQUS-->
+                    <div class="clear"></div>
+                </div>
+                <div class="bottom"></div>
+            </div>
+            {block:IndexPage}
+                <div id="notes_container_{PostID}" class="bubble" style="display:none">
+                    <div class="top"></div>
+                    <div class="content bleed" id="notes_{PostID}"></div>
+                    <div class="bottom"></div>
+                </div>
+            {/block:IndexPage}
+            {block:PermalinkPage}
+<!--IF DISQUS---
+    {block:Date}
+        <div class="bubble">
+            <div class="top"></div>
+            <style type="text/css">
+                #disqus_thread {
+                    background: url('http://assets.tumblr.com/images/iphone/tumblelog/content_bg.png') top left repeat-y transparent;
+                    width: 294px;
+                    margin: 0;
+                    padding: 0 5px;
+                }
+                #disqus_thread a {
+                    text-decoration: underline;
+                }
+                #dsq-new-post h3 {
+                    margin-top: 0;
+                }
+                #dsq-content .dsq-item-trackback {
+                    margin-bottom: 0;
+                }
+            </style>
+            <div id="disqus_thread"></div>
+            <script type="text/javascript" src="http://disqus.com/forums/DISQUS_SHORTNAME/embed.js"></script>
+            <div class="content">
+                <div class="copy">
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="bottom"></div>
+        </div>
+    {/block:Date}
+----ENDIF DISQUS-->
+                {block:PostNotes}
+                    <div class="bubble">
+                        <div class="top"></div>
+                        <div class="content bleed">
+                            {PostNotes}
+                        </div>
+                        <div class="bottom"></div>
+                    </div>
+                {/block:PostNotes}
+                <div style="margin-bottom:15px;"></div>
+            {/block:PermalinkPage}
+        {/block:Posts}
+        <!-- END POSTS -->
+    </div>
+    {block:IndexPage}
+        <div id="pagination">
+            {block:NextPage}<a href="/page/2" onclick="load_more_posts(); return false;" id="load_more">Load more posts</a>
+            <span id="loading_more" style="display:none"><img src="http://assets.tumblr.com/images/loading_2c2d2e.gif" width="16" height="16" /> Loading more posts...</span>{/block:NextPage}
+            <br /><a href="/disable_mobile_interface">Standard view</a>
+        </div>
+    {/block:IndexPage}
+<!--IF DISQUS---
+<script type="text/javascript">
+(function() {
+    var links = document.getElementsByTagName('a');
+    var query = '?';
+    for(var i = 0; i < links.length; i++) {
+        if(links[i].href.indexOf('#disqus_thread') >= 0) {
+            query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+        }
+    }
+    document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/DISQUS_SHORTNAME/get_num_replies.js' + query + '"><' + '/script>');
+})();
+</script>
+----ENDIF DISQUS-->
+</body>
+</html>
