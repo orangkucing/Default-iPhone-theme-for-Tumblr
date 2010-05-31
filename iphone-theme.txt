@@ -551,6 +551,7 @@
                         <div class="copy text_post">
                             {block:Title}<h2>{Title}</h2>{/block:Title}
                             {Body}
+                            {block:More}<p><a href="{Permalink}">Read More</a></p>{/block:More}
                         </div>
                     {/block:Text}
 
