@@ -479,6 +479,8 @@
             $('load_more').style.display = 'none';
             
             if (! current_url) current_url = document.location.href;
+            if (current_url.charAt(current_url.length - 1) != '/') current_url += '/';
+
             if (next_page === 1) current_url += 'page/1';
             
             current_url = current_url.replace('page/' + next_page, 'page/' + ++next_page);
