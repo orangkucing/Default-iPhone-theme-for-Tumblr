@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>{Title}</title>
-    <meta name="viewport" content="width=320"/>
+    <meta name="viewport" content="width=640"/>
     <link rel="shortcut icon" href="{Favicon}" />
     <link rel="apple-touch-icon-precomposed" href="{PortraitURL-128}"/>
     {block:Description}<meta name="description" content="{MetaDescription}" />{/block:Description}
@@ -19,6 +19,10 @@
             clear: both;
         }
         
+        iframe#tumblr_controls {
+            margin-top: -4px !important;
+        }
+
         a {
             text-decoration: none;
             color: inherit;
@@ -27,40 +31,43 @@
         
         header {
             display: block;
-            background: url('http://assets.tumblr.com/images/iphone/tumblelog/toolbar_bg.png') top left repeat-x #6d84a2;
-            border-bottom: 1px solid #363d4a;
+            background: url('http://assets.tumblr.com/images/iphone/tumblelog_retina/toolbar_bg.png') top left repeat-x #6d84a2;
+            border-bottom: 2px solid #363d4a;
             text-align: center;
             font-weight: bold;
-            font-size: 18px;
+            font-size: 36px;
             color: #fff;
-            padding: 10px 0;
+            padding: 21px 0;
             text-shadow: 0 -1px 0 #667287;
             white-space: nowrap;
             overflow: hidden;
         }
         
             header a.avatar {
-                display: block;
+                width: 54px;
+                height: 54px;
                 position: absolute;
-                top: 6px;
-                left: 5px;
-                width: 28px;
-                height: 27px;
-                background: url('{PortraitURL-30}') center no-repeat #465772;
-                border-top: 1px solid #515a6a;
-                border-bottom: 1px solid #b5bbc9;
-                -webkit-border-radius: 3px;
-                -moz-border-radius: 3px;
-                border-radius: 3px;
+                top: 12px;
+                left: 10px;
+                display: block;
             }
+
+                header a.avatar img {
+                    max-width: 54px;
+                    border-top: 2px solid #515a6a;
+                    border-bottom: 2px solid #b5bbc9;
+                    -webkit-border-radius: 6px;
+                    -moz-border-radius: 6px;
+                    border-radius: 6px;
+                }
             
             header #post_pagination {
-                background: url('http://assets.tumblr.com/images/iphone/tumblelog/toolbar_browse_post_pagination_inactive.png') top left repeat-y transparent;
+                background: url('http://assets.tumblr.com/images/iphone/tumblelog_retina/toolbar_browse_post_pagination_inactive.png') top left repeat-y transparent;
                 position: absolute;
-                top: 7px;
-                left: 8px;
-                width: 76px;
-                height: 27px;
+                top: 14px;
+                left: 16px;
+                width: 152px;
+                height: 54px;
             }
             
                 header #post_pagination a.left {
@@ -77,39 +84,39 @@
         
         .bubble {
             display: block;
-            width: 304px;
-            margin: 10px auto 0 auto;
+            width: 608px;
+            margin: 20px auto 0 auto;
             overflow: hidden;
         }
             
             .bubble .top {
-                background: url('http://assets.tumblr.com/images/iphone/tumblelog/content_top.png') top left repeat-y transparent;
-                width: 304px;
-                height: 17px;
+                background: url('http://assets.tumblr.com/images/iphone/tumblelog_retina/content_top.png') top left repeat-y transparent;
+                width: 608px;
+                height: 34px;
                 margin: 0 auto;
             }
             
             .bubble .content {
-                background: url('http://assets.tumblr.com/images/iphone/tumblelog/content_bg.png') top left repeat-y transparent;
-                width: 264px;
+                background: url('http://assets.tumblr.com/images/iphone/tumblelog_retina/content_bg.png') -1px 0 repeat-y transparent;
+                width: 528px;
                 margin: 0 auto;
-                padding: 0 20px;
+                padding: 0 40px;
             }
 
             .bubble .content.bleed {
-                width: 300px;
-                padding: 0 2px;
+                width: 600px;
+                padding: 0 4px;
             }
                 
                 .bubble .content img {
                     display: block;
-                    border: 2px solid #fff;
-                    max-width: 260px;
+                    border: 4px solid #fff;
+                    max-width: 520px;
                     height: auto;
                 }
                 
                 .bubble .content .copy {
-                    font-size: 13px;
+                    font-size: 26px;
                     color: #333536;
                 }
                     
@@ -119,14 +126,14 @@
                     
                     .bubble .content h2 {
                         color: #535456;
-                        font-size: 18px;
-                        line-height: 20px;
+                        font-size: 36px;
+                        line-height: 40px;
                         margin: 0;
                         padding: 0;
                     }
                     
                     .bubble .content .copy p {
-                        margin: 10px 0;
+                        margin: 20px 0;
                     }
                     
                     .bubble .content .copy.text_post p:first-child {
@@ -138,9 +145,9 @@
                     }
                     
                     .bubble .content .copy blockquote {
-                        margin: 10px 0px 10px 10px;
-                        padding-left: 15px;
-                        border-left: solid 3px #c9cccf;
+                        margin: 20px 0px 20px 20px;
+                        padding-left: 30px;
+                        border-left: solid 6px #c9cccf;
                     }
                     
                     .bubble .content .copy img {
@@ -148,14 +155,14 @@
                     }
                     
                     .bubble .content .video {
-                        font-size: 13px;
+                        font-size: 26px;
                         color: #333536;
-                        padding-top: 6px;
                     }
-                    
-                        .bubble .content .video div {
-                            width: 260px;
-                            border: 2px solid #fff;
+
+                        .bubble .content .video div embed,                    
+                        .bubble .content .video .html_photoset object {
+                            width: 520px;
+                            border: 4px solid #fff;
                             margin: 0 auto;
                         }
                         
@@ -172,19 +179,21 @@
                                 border: none;
                             }
                         
-                        .bubble .content .video embed,
-                        .bubble .content .video object {
-                            width: 264px;
-                            height: auto;
+                        .bubble .content .video * {
+                            width: auto;
+                            min-height: auto;
+                            padding: 0px;
+                            margin: 0;
                         }
                         
                         .bubble .content .video .html_photoset {
+                            width: 520px;
                             text-align: center;
                             border: none;
                         }
                                                 
                             .bubble .content .video .html_photoset p {
-                                margin: 15px 0;
+                                margin: 30px 0;
                             }
                             
                             .bubble .content .video .html_photoset p:first-child {
@@ -192,18 +201,19 @@
                             }
                             
                                 .bubble .content .video .html_photoset p img.photoset_photo {
+                                    width: 520px;
                                     margin: 0 auto;
-                                    border: 2px solid #fff;
+                                    border: 4px solid #fff;
                                 }
                                 
                                 .bubble .content .video .html_photoset p.photoset_caption {
-                                    margin-top: 10px;
+                                    margin-top: 20px;
                                 }
                     
                     .bubble .content .link {
                         display: block;
-                        font-size: 16px;
-                        line-height: 18px;
+                        font-size: 32px;
+                        line-height: 36px;
                         font-weight: bold;
                         color: #49729a;
                     }
@@ -214,8 +224,8 @@
                         }
                     
                     .bubble .content .quote {
-                        font-size: 16px;
-                        line-height: 18px;
+                        font-size: 32px;
+                        line-height: 36px;
                         font-weight: bold;
                         color: #535456;
                     }
@@ -231,15 +241,19 @@
                     .bubble .content .audio img {
                         display: inline-block;
                         border: none;
-                        width: 18px;
-                        height: 18px;
+                        width: 36px;
+                        height: 36px;
                         position: relative;
-                        top: 4px;
-                        margin-right: 4px;
+                        top: 8px;
+                        margin-right: 8px;
                     }
                     
                     .bubble .content .audio a {
                         font-weight: bold;
+                    }
+
+                    .bubble .content .audio strong u {
+                        font-size: 24px;
                     }
                     
                     .bubble .content .video img {
@@ -248,61 +262,65 @@
                 
                 .bubble .content .chat {
                     width: 100%;
+                    border-bottom: 2px solid #fff;
                     margin: 0;
-                    border-top: 1px solid #dde2e7;
-                    border-bottom: 1px solid #fff;
                 }
                 
                     .bubble .content .chat td {
-                        padding: 8px 0;
-                        border-top: 1px solid #fff;
-                        border-bottom: 1px solid #dde2e7;
+                        padding: 16px 0;
+                        border-top: 2px solid #fff;
+                        border-bottom: 2px solid #dde2e7;
                         vertical-align: top;
-                        font-size: 13px;
+                        font-size: 26px;
                         color: #333536;
                     }
-                    
+
+                        .bubble .content .chat tr:first-child td {
+                            border-top-width: 0px;
+                            padding-top: 0px;
+                        }
+
                     .bubble .content .chat td.username {
-                        padding-right: 12px;
+                        padding-right: 24px;
                         font-weight: bold;
-                        max-width: 115px;
+                        max-width: 230px;
                     }
                 
                 .bubble .content .answer_question {
                     background: #e4e7ea;
-                    -webkit-border-radius: 8px;
-                    -moz-border-radius: 8px;
-                    border-radius: 8px;
-                    border-top: 1px solid #c6cdd4;
-                    border-bottom: 1px solid #fff;
-                    padding: 13px 15px;
-                    font-size: 16px;
-                    line-height: 19px;
+                    -webkit-border-radius: 16px;
+                    -moz-border-radius: 16px;
+                    border-radius: 16px;
+                    border-top: 2px solid #c6cdd4;
+                    border-bottom: 2px solid #fff;
+                    padding: 26px 30px;
+                    font-size: 32px;
+                    line-height: 38px;
                     color: #535355;
                     word-wrap: break-word;
                 }
                 
                 .bubble .content .answer_asker {
-                    margin-top: 12px;
+                    margin-top: 24px;
                     font-weight: bold;
-                    font-size: 14px;
+                    font-size: 28px;
                     color: #65676a;
                 }
                 
                     .bubble .content .answer_asker img {
                         display: inline-block;
                         border: none;
-                        vertical-align: -7px;
-                        margin: 0 7px 0 10px;
+                        vertical-align: -14px;
+                        margin: 0 14px 0 20px;
                     }
                 
                 .bubble .content .date,
                 .bubble .content .note_count {
                     float: left;
                     font-weight: bold;
-                    font-size: 12px;
+                    font-size: 24px;
                     color: #8c8e90;
-                    margin-top: 13px;
+                    margin-top: 26px;
                     text-decoration: underline;
                 }
                 
@@ -313,24 +331,24 @@
                 .bubble .content ol.notes {
                     margin: 0;
                     padding: 0;
+                    border-top: 2px solid #dde2e7;
+                    border-bottom: 2px solid #fff;
                     list-style-type: none;
-                    font-size: 12px;
-                    border-top: 1px solid #dde2e7;
-                    border-bottom: 1px solid #fff;
+                    font-size: 24px;
                 }
                 
                     .bubble .content ol.notes li.note {
-                        padding: 10px 30px 10px 10px;
-                        border-top: 1px solid #fff;
-                        border-bottom: 1px solid #dde2e7;
+                        padding: 20px 60px 20px 20px;
+                        border-top: 2px solid #fff;
+                        border-bottom: 2px solid #dde2e7;
                     }
                     
                         .bubble .content ol.notes li.note img.avatar {
                             display: inline-block;
-                            vertical-align: -5px;
-                            margin-right: 6px;
-                            width: 16px;
-                            height: 16px;
+                            vertical-align: -10px;
+                            margin-right: 12px;
+                            width: 32px;
+                            height: 32px;
                         }
                         
                         .bubble .content ol.notes li.note span.action {
@@ -342,9 +360,9 @@
                         }
                         
                         .bubble .content ol.notes li.note blockquote {
-                            border-left: 3px solid #c9cccf;
-                            padding: 1px 10px;
-                            margin: 10px 0px 0px 25px;
+                            border-left: 6px solid #c9cccf;
+                            padding: 2px 20px;
+                            margin: 20px 0px 0px 50px;
                         }
                             
                             .bubble .content ol.notes li.note blockquote a {
@@ -358,59 +376,63 @@
                         }
                         
                     .bubble .content ol.notes li.like {
-                        background: url('http://assets.tumblr.com/images/note_like.png') 273px 14px no-repeat;
+                        background: url('http://assets.tumblr.com/images/iphone/tumblelog_retina/note_like.png') 546px 27px no-repeat;
                     }
                     
                     .bubble .content ol.notes li.reblog {
-                        background: url('http://assets.tumblr.com/images/note_reblog.png') 273px 12px no-repeat;
+                        background: url('http://assets.tumblr.com/images/iphone/tumblelog_retina/note_reblog.png') 546px 24px no-repeat;
                     }
                     
                     .bubble .content ol.notes li.answer {
-                        background: url('http://assets.tumblr.com/images/note_answer.png') 275px 11px no-repeat;
+                        background: url('http://assets.tumblr.com/images/iphone/tumblelog_retina/note_answer.png') 550px 22px no-repeat;
                     }
                     
                     .bubble .content ol.notes li.facebook_comment {
-                        background: url('http://assets.tumblr.com/images/note_facebook_2.png') 272px 12px no-repeat;
+                        background: url('http://assets.tumblr.com/images/note_facebook_2.png') 544px 24px no-repeat;
                     }
                     
                     .bubble .content ol.notes li.photo,
                     .bubble .content ol.notes li.reply {
-                        background: url('http://assets.tumblr.com/images/note_reply.png') 272px 12px no-repeat;
+                        background: url('http://assets.tumblr.com/images/iphone/tumblelog_retina/note_reply.png') 544px 24px no-repeat;
+                    }
+
+                    .bubble .content ol.notes a.more_notes_link {
+                        font-weight: bold;
                     }
             
             .bubble .bottom {
-                background: url('http://assets.tumblr.com/images/iphone/tumblelog/content_bottom.png') bottom left repeat-y transparent;
-                width: 304px;
-                height: 18px;
+                background: url('http://assets.tumblr.com/images/iphone/tumblelog_retina/content_bottom.png') -1px 0 repeat-y transparent;
+                width: 608px;
+                height: 38px;
                 margin: 0 auto;
             }
         
         #pagination {
-            background: url('http://assets.tumblr.com/images/iphone/tumblelog/pagination_bg.png') top left repeat-x #2c2d2e;
-            margin-top: 12px;
+            background: url('http://assets.tumblr.com/images/iphone/tumblelog_retina/pagination_bg.png') top left repeat-x #2c2d2e;
+            margin-top: 24px;
             text-align: center;
-            font-size: 13px;
-            padding: 16px 15px;
+            font-size: 26px;
+            padding: 32px 30px;
         }
             
             #pagination img {
-                vertical-align: -1px;
-                margin-right: 5px;
+                vertical-align: -2px;
+                margin-right: 10px;
             }
             
             #pagination a, #pagination span{
                 display: inline-block;
                 color: #7a7a7c;
-                border-bottom: 1px solid #7a7a7c;
+                border-bottom: 2px solid #7a7a7c;
             }
             
             #pagination #load_more,
             #pagination #loading_more {
-                font-size: 18px;
+                font-size: 36px;
                 font-weight: bold;
                 color: #ebeef1;
                 border: none;
-                margin-bottom: 15px;
+                margin-bottom: 30px;
             }
     </style>
     <script type="text/javascript" charset="utf-8">
@@ -530,13 +552,13 @@
     <header>
         <a href="/">{Title}</a>
         {block:IndexPage}
-            <a href="/" class="avatar"></a>
+            <a href="/" class="avatar"><img src="{PortraitURL-64}"/></a>
         {/block:IndexPage}
         {block:PermalinkPage}
             {block:PermalinkPagination}
                 <div id="post_pagination">
-                    {block:PreviousPost}<a href="{PreviousPost}" class="left"><img src="http://assets.tumblr.com/images/iphone/tumblelog/toolbar_browse_left.png"></a>{/block:PreviousPost}
-                    {block:NextPost}<a href="{NextPost}" class="right"><img src="http://assets.tumblr.com/images/iphone/tumblelog/toolbar_browse_right.png"></a>{/block:NextPost}
+                    {block:PreviousPost}<a href="{PreviousPost}" class="left"><img src="http://assets.tumblr.com/images/iphone/tumblelog_retina/toolbar_browse_left.png"></a>{/block:PreviousPost}
+                    {block:NextPost}<a href="{NextPost}" class="right"><img src="http://assets.tumblr.com/images/iphone/tumblelog_retina/toolbar_browse_right.png"></a>{/block:NextPost}
                 </div>
             {/block:PermalinkPagination}
         {/block:PermalinkPage}
@@ -553,12 +575,12 @@
                         <div class="copy text_post">
                             {block:Title}<h2>{Title}</h2>{/block:Title}
                             {Body}
-                            {block:More}<p class="read_more_container"><a href="{Permalink}" class="read_more">Read More</a></p>{/block:More}
+{block:More}<p><a href="{Permalink}">Read More</a></p>{/block:More}
                         </div>
                     {/block:Text}
 
                     {block:Photo}
-                        <img src="{PhotoURL-400}" alt="{PhotoAlt}" />
+                        <img src="{PhotoURL-500}" alt="{PhotoAlt}" />
                         {block:Caption}
                             <div class="copy">
                                 {Caption}
@@ -568,7 +590,7 @@
 
                     {block:Photoset}
                         <div class="video">
-                            {Photoset-400}
+                            {Photoset-500}
                         </div>
                         {block:Caption}
                             <div class="copy">
@@ -589,9 +611,9 @@
                     {block:Quote}
                         <div class="quote">&#8220;{Quote}&#8221;</div>
                         {block:Source}
-                            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0">
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin:20px 0">
                                 <tr>
-                                    <td valign="top" style="width:1px; padding:0 10px 0 0">
+                                    <td valign="top" style="width:2px; padding:0 20px 0 0">
                                         &mdash;
                                     </td>
                                     <td valign="top" class="copy quote_source">
@@ -618,7 +640,7 @@
 
                     {block:Video}
                         <div class="video"> 
-                            {Video-400}
+                            {Video-500}
                         </div>
                         {block:Caption}
                             <div class="copy">
@@ -628,7 +650,7 @@
                     {/block:Video}
 
                     {block:Chat}
-                        {block:Title}<h2 style="margin-bottom:13px;">{Title}</h2>{/block:Title}
+                        {block:Title}<h2 style="margin-bottom:26px;">{Title}</h2>{/block:Title}
                         <table class="chat" border="0" cellpadding="0" cellspacing="0">
                             {block:Lines}
                                 <tr>
@@ -642,7 +664,7 @@
                     {block:Answer}
                         <div class="answer_question">{Question}</div>
                         <div class="answer_asker">
-                            <img src="{AskerPortraitURL-24}" width="24" height="24" />{Asker}
+                            <img src="{AskerPortraitURL-48}" width="48" height="48" />{Asker}
                         </div>
                         <div class="copy">
                             {Answer}
@@ -655,15 +677,15 @@
                         </a>
                     {/block:Date}
                     {block:NoteCount}
-                        <a href="{Permalink}" class="note_count" onclick="show_notes({PostID}, '{PostNotesURL}'); return false;" id="show_notes_{PostID}" {Target} style="padding-left:3px;">
+                        <a href="{Permalink}" class="note_count" onclick="show_notes({PostID}, '{PostNotesURL}'); return false;" id="show_notes_{PostID}" {Target} style="padding-left:6px;">
                             {NoteCountWithLabel}
                         </a>
-                        <a href="#" class="note_count" onclick="hide_notes({PostID}); return false;" id="hide_notes_{PostID}" style="display: none; padding-left:3px;">
+                        <a href="#" class="note_count" onclick="hide_notes({PostID}); return false;" id="hide_notes_{PostID}" style="display: none; padding-left:6px;">
                              Hide notes
                         </a>
                     {/block:NoteCount}
 <!--IF DISQUS---
-                    {block:Date}<a href="{Permalink}#disqus_thread" class="note_count" style="padding-left:3px;">comments</a>{/block:Date}
+                    {block:Date}<a href="{Permalink}#disqus_thread" class="note_count" style="padding-left:6px;">Comments</a>{/block:Date}
 ----ENDIF DISQUS-->
                     <div class="clear"></div>
                 </div>
@@ -683,10 +705,10 @@
             <div class="top"></div>
             <style type="text/css">
                 #disqus_thread {
-                    background: url('http://assets.tumblr.com/images/iphone/tumblelog/content_bg.png') top left repeat-y transparent;
-                    width: 294px;
+                    background: url('http://assets.tumblr.com/images/iphone/tumblelog_retina/content_bg.png') -1px 0 repeat-y transparent;
+                    width: 586px;
                     margin: 0;
-                    padding: 0 5px;
+                    padding: 0 11px;
                 }
                 #disqus_thread a {
                     text-decoration: underline;
@@ -699,7 +721,12 @@
                 }
             </style>
             <div id="disqus_thread"></div>
-            <script type="text/javascript" src="http://disqus.com/forums/DISQUS_SHORTNAME/embed.js"></script>
+            <script type="text/javascript">
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true; dsq.src = 'http://DISQUS_SHORTNAME.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+            </script>
             <div class="content">
                 <div class="copy">
                 </div>
@@ -718,7 +745,7 @@
                         <div class="bottom"></div>
                     </div>
                 {/block:PostNotes}
-                <div style="margin-bottom:15px;"></div>
+                <div style="margin-bottom:30px;"></div>
             {/block:PermalinkPage}
         {/block:Posts}
         <!-- END POSTS -->
@@ -732,16 +759,12 @@
     {/block:IndexPage}
 <!--IF DISQUS---
 <script type="text/javascript">
-(function() {
-    var links = document.getElementsByTagName('a');
-    var query = '?';
-    for(var i = 0; i < links.length; i++) {
-        if(links[i].href.indexOf('#disqus_thread') >= 0) {
-            query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
-        }
-    }
-    document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/DISQUS_SHORTNAME/get_num_replies.js' + query + '"><' + '/script>');
-})();
+var disqus_shortname = 'DISQUS_SHORTNAME';
+(function () {
+  var s = document.createElement('script'); s.async = true;
+  s.src = 'http://disqus.com/forums/' + disqus_shortname + '/count.js';
+  (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
 </script>
 ----ENDIF DISQUS-->
 </body>
