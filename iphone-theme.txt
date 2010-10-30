@@ -8,19 +8,28 @@
     <link rel="apple-touch-icon-precomposed" href="{PortraitURL-128}"/>
     {block:Description}<meta name="description" content="{MetaDescription}" />{/block:Description}
     <style type="text/css">
+        html {
+            width: 640px;
+            margin: auto;
+            position: relative;
+        }
+
         body {
-            margin: 0;
+            width: 640px;
+            margin: 0 auto;
             padding: 0;
             background: url('http://assets.tumblr.com/images/iphone/tumblelog/bg.png') top left repeat #757778;
             font-family: Helvetica, Arial, sans-serif;
         }
-        
+
         .clear {
             clear: both;
         }
-        
+
         iframe#tumblr_controls {
-            margin-top: -4px !important;
+            position: absolute;
+            top: 47px !important;
+            right: 47px !important;
         }
 
         a {
@@ -29,59 +38,99 @@
             word-wrap: break-word;
         }
         
-        header {
-            display: block;
-            background: url('http://assets.tumblr.com/images/iphone/tumblelog_retina/toolbar_bg.png') top left repeat-x #6d84a2;
-            border-bottom: 2px solid #363d4a;
-            text-align: center;
-            font-weight: bold;
-            font-size: 36px;
-            color: #fff;
-            padding: 21px 0;
-            text-shadow: 0 -1px 0 #667287;
-            white-space: nowrap;
-            overflow: hidden;
+        header.bubble .content {
+            padding: 0 40px;
         }
         
-            header a.avatar {
-                width: 54px;
-                height: 54px;
-                position: absolute;
-                top: 12px;
-                left: 10px;
-                display: block;
-            }
-
-                header a.avatar img {
-                    max-width: 54px;
-                    border-top: 2px solid #515a6a;
-                    border-bottom: 2px solid #b5bbc9;
-                    -webkit-border-radius: 6px;
-                    -moz-border-radius: 6px;
-                    border-radius: 6px;
-                }
-            
-            header #post_pagination {
-                background: url('http://assets.tumblr.com/images/iphone/tumblelog_retina/toolbar_browse_post_pagination_inactive.png') top left repeat-y transparent;
-                position: absolute;
-                top: 14px;
-                left: 16px;
-                width: 152px;
-                height: 54px;
+            header a.title {
+                max-width: 317px;
+                color: #333536;
+                font-size: 38px;
+                font-weight: bold;
+                word-wrap: break-word;
+                letter-spacing: -1px;
+                line-height: 36px;
+                vertical-align: 2px;
+                margin: 0 0 8px 0;
+                display: inline-block;
+                float: left;
             }
             
-                header #post_pagination a.left {
-                    position: absolute;
-                    top: 0;
-                    left: 0;
+            header .info {
+                margin: 20px 0 0 0;
+            }
+                
+                header .info .divider {
+                    height: 2px;
+                    background: #dee0e2;
+                    border-bottom: 2px solid #fff;
+                    margin: 0 0 30px 0;
                 }
                 
-                header #post_pagination a.right {
-                    position: absolute;
-                    top: 0;
-                    right: 0;
+                header .info img.portrait {
+                    width: 98px;
+                    border-radius: 10px;
+                    margin: 3px 30px 20px 0;
+                    float: left;
                 }
-        
+                
+                header .info .body {
+                    height: 98px;
+                    min-height: 98px;
+                    font-size: 26px;
+                    position: relative;
+                    overflow: hidden;
+                }
+                
+                    header .info .body.showing {
+                        height: auto;
+                        overflow: visible;
+                    }
+                
+                    header .info .body img,
+                    header .info .body br {
+                        display: none;
+                    }
+                    
+                        header .info .body.showing img,
+                        header .info .body.showing br {
+                            max-width: 100%;
+                            display: inline-block;
+                        }
+            
+                header .info .body .show_all {
+                    width: 120px;
+                    height: 30px;
+                    text-align: right;
+                    background: #f3f6fa;
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
+                }    
+
+                    header .info .body.showing .show_all {
+                        bottom: -26px;
+                    }
+            
+                    header .info .body .show_all a {
+                        color: #8c8e90;
+                        font-size: 24px;
+                        font-weight: bold;
+                    }
+                    
+                    header .info .body .show_all .gradient {
+                        width: 100px;
+                        height: 30px;
+                        background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(255,255,255,0.0)), color-stop(100%,#F3F6FA));
+                        position: absolute;
+                        top: 0;
+                        left: -100px;
+                    }
+                    
+                        header .info .body.showing .gradient {
+                            display: none;
+                        }
+ 
         .bubble {
             display: block;
             width: 608px;
@@ -89,6 +138,10 @@
             overflow: hidden;
         }
             
+            .permalink + #posts .bubble {
+                margin-top: 10px;
+            }
+
             .bubble .top {
                 background: url('http://assets.tumblr.com/images/iphone/tumblelog_retina/content_top.png') top left repeat-y transparent;
                 width: 608px;
@@ -99,19 +152,24 @@
             .bubble .content {
                 background: url('http://assets.tumblr.com/images/iphone/tumblelog_retina/content_bg.png') -1px 0 repeat-y transparent;
                 width: 528px;
+                line-height: 34px;
                 margin: 0 auto;
-                padding: 0 40px;
+                padding: 2px 40px;
             }
+            
+                .bubble.description .content {
+                    padding: 0 40px 0 40px;
+                }
 
             .bubble .content.bleed {
                 width: 600px;
                 padding: 0 4px;
             }
                 
-                .bubble .content img {
+                .bubble .content img.photo {
                     display: block;
                     border: 4px solid #fff;
-                    max-width: 520px;
+                    width: 520px;
                     height: auto;
                 }
                 
@@ -136,6 +194,56 @@
                         margin: 20px 0;
                     }
                     
+                    .bubble .content .copy code {
+                        word-wrap: break-word;
+                    }
+
+                    .audio_player {
+                        margin: 0 0 30px 0;
+                    }
+
+                        .audio_player a.play {
+                            color: #333536;
+                            min-height: 76px; /* 126 - 25 - 25 for padding */
+                            font-size: 26px;
+                            line-height: 38px;
+                            text-decoration: none;
+                            background: #e4e7ea url('http://static.tumblr.com/thpaaos/BVZl8fpzl/mobile_dashboard_play_pause_sprite.png') 35px center no-repeat;
+                            -webkit-border-radius: 16px;
+                            -moz-border-radius: 16px;
+                            border-radius: 16px;
+                            border-top: 2px solid #c6cdd4;
+                            border-bottom: 2px solid #fff;
+                            padding: 25px 35px 25px 93px;
+                            display: block;
+                            -webkit-tap-highlight-color: rgba(0,0,0,0.0);
+                        }
+
+                            .audio_player a.play.is_playing {
+                                background: #e9ecef url('http://static.tumblr.com/thpaaos/BVZl8fpzl/mobile_dashboard_play_pause_sprite.png') -636px center no-repeat;
+                                -webkit-box-shadow: inset 0 0 20px #d9dfe3;
+                            }
+
+                            .audio_player.with_cover_art a.play {
+                                width: 245px;
+                                display: inline-block;
+                                float: left;
+                            }
+                            
+                                .audio_player a.play strong.listen {
+                                    margin: 18px 0 0 0;
+                                    display: inline-block;
+                                }
+
+                        .audio_player img.cover {
+                            width: 130px;
+                            -webkit-border-radius: 10px;
+                            -webkit-box-shadow: 0px 1px 5px #4f4f4f;
+                            margin: 0 20px 0 0;
+                            float: left;
+                            display: block;
+                        }
+
                     .bubble .content .copy.text_post p:first-child {
                         margin-top: 0;
                     }
@@ -155,13 +263,13 @@
                     }
                     
                     .bubble .content .video {
+                        width: 520px;
                         font-size: 26px;
                         color: #333536;
                     }
 
-                        .bubble .content .video div embed,                    
-                        .bubble .content .video .html_photoset object {
-                            width: 520px;
+                        .bubble .content .video * {
+                            width: 520px !important;
                             border: 4px solid #fff;
                             margin: 0 auto;
                         }
@@ -220,7 +328,7 @@
                     
                         .bubble .content .link span {
                             font-family: 'Lucida Grande', sans-serif;
-                            vertical-align: -1px
+                            vertical-align: -1px;
                         }
                     
                     .bubble .content .quote {
@@ -233,7 +341,7 @@
                         .bubble .content .quote_source *:first-child {
                             margin-top: 0;
                         }
-                    
+                    /*
                     .bubble .content .audio {
                         margin-top: 0;
                     }
@@ -254,7 +362,7 @@
 
                     .bubble .content .audio strong u {
                         font-size: 24px;
-                    }
+                    } */
                     
                     .bubble .content .video img {
                         border: none;
@@ -406,7 +514,17 @@
                 height: 38px;
                 margin: 0 auto;
             }
-        
+            
+                .bubble.description .bottom {
+                    height: 102px;
+                    background-image: url('http://static.tumblr.com/thpaaos/lXDlb08n9/description_bottom.png');
+                }
+                
+                .bubble.permalink .bottom {
+                    height: 59px;
+                    background-image: url('http://static.tumblr.com/thpaaos/IyXlb0h5q/permalink_bottom.png');
+                }
+
         #pagination {
             background: url('http://assets.tumblr.com/images/iphone/tumblelog_retina/pagination_bg.png') top left repeat-x #2c2d2e;
             margin-top: 24px;
@@ -420,7 +538,7 @@
                 margin-right: 10px;
             }
             
-            #pagination a, #pagination span{
+            #pagination a, #pagination span {
                 display: inline-block;
                 color: #7a7a7c;
                 border-bottom: 2px solid #7a7a7c;
@@ -543,25 +661,59 @@
             $('notes_container_' + post_id).style.display = 'none';
         }
         
+        var showing_info = 0;
+        
+        function show_info() {
+            if (showing_info == 0) {
+                $('show_all_link').innerHTML = 'X'
+                $('body_container').className = 'body showing'
+                showing_info = 1;
+            } else {
+                $('show_all_link').innerHTML = 'Show all'
+                $('body_container').className = 'body'
+                showing_info = 0;
+            }
+        }
+        
+        function play_audio(post_id) {
+            var audio = $('audio_file_' + post_id);
+            
+            if (audio.paused) {
+                audio.play();
+                $('play_button_' + post_id).className = 'play is_playing';
+            } else {
+                audio.pause();
+                $('play_button_' + post_id).className = 'play';
+            }
+        };
+        
         function strip_anchors(input) {
             return input.replace(/<a /g, '<u ').replace(/<\/a>/g, '<\/u>');
         }
     </script>
  </head>
  <body>
-    <header>
-        <a href="/">{Title}</a>
-        {block:IndexPage}
-            <a href="/" class="avatar"><img src="{PortraitURL-64}"/></a>
-        {/block:IndexPage}
-        {block:PermalinkPage}
-            {block:PermalinkPagination}
-                <div id="post_pagination">
-                    {block:PreviousPost}<a href="{PreviousPost}" class="left"><img src="http://assets.tumblr.com/images/iphone/tumblelog_retina/toolbar_browse_left.png"></a>{/block:PreviousPost}
-                    {block:NextPost}<a href="{NextPost}" class="right"><img src="http://assets.tumblr.com/images/iphone/tumblelog_retina/toolbar_browse_right.png"></a>{/block:NextPost}
+ 
+    <header class="bubble {block:PermalinkPage}permalink{/block:PermalinkPage}{block:IndexPage}description{/block:IndexPage}">
+        <div class="top"></div>
+        <div class="content">
+            <a href="/" class="title">{Title}</a>
+            <div class="clear"></div>
+            {block:IndexPage}
+                <div class="info">
+                    <div class="divider"></div>
+                    <img src="{PortraitURL-96}" class="portrait"/>
+                    <div class="body" id="body_container">
+                        {block:Description}{Description}{/block:Description}
+                        <div class="show_all" id="show_all_link_container">
+                            <div class="gradient" id="show_all_gradient"></div>
+                            <a href="#" onclick="show_info(); return false;" id="show_all_link">Show all</a>
+                        </div>
+                    </div>
                 </div>
-            {/block:PermalinkPagination}
-        {/block:PermalinkPage}
+            {/block:IndexPage}
+        </div>
+        <div class="bottom"></div>
     </header>
 
     <div id="posts">
@@ -575,12 +727,12 @@
                         <div class="copy text_post">
                             {block:Title}<h2>{Title}</h2>{/block:Title}
                             {Body}
-{block:More}<p><a href="{Permalink}">Read More</a></p>{/block:More}
+                            {block:More}<p class="read_more_container"><a href="{Permalink}" class="read_more">Read More</a></p>{/block:More}
                         </div>
                     {/block:Text}
 
                     {block:Photo}
-                        <img src="{PhotoURL-500}" alt="{PhotoAlt}" />
+                        {block:HighRes}<a href="{PhotoURL-HighRes}">{/block:HighRes}<img src="{PhotoURL-500}" alt="{PhotoAlt}" class="photo" />{block:HighRes}</a>{/block:HighRes}
                         {block:Caption}
                             <div class="copy">
                                 {Caption}
@@ -625,12 +777,16 @@
                     {/block:Quote}
 
                     {block:Audio}
-                        {block:AlbumArt}
-                            <img src="{AlbumArtURL}">
-                        {/block:AlbumArt}
-                        <a class="audio" href="{RawAudioURL}">
-                            <strong><img src="http://assets.tumblr.com/images/listen_icon.png?2" alt="Listen"/> <u>Listen</u></strong>
-                        </a>
+                        <div class="audio_player {block:AlbumArt}with_cover_art{/block:AlbumArt}" id="play_audio_{PostID}"> 
+                            {block:AlbumArt}<img src="{AlbumArtURL}" class="cover"/>{/block:AlbumArt}
+                            <a class="play" onclick="play_audio({PostID}); return false;" id="play_button_{PostID}">
+                                {block:TrackName}<strong>{TrackName}</strong><br/>{/block:TrackName}
+                                {block:Artist}{Artist}{/block:Artist}
+                                <strong class="listen" style="display:none">Listen</strong>
+                            </a>
+                            <audio id="audio_file_{PostID}" src="{RawAudioURL}"></audio>
+                            <div class="clear"></div>
+                        </div>
                         {block:Caption}
                             <div class="copy">
                                 {Caption}
