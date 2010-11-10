@@ -28,8 +28,8 @@
 
         iframe#tumblr_controls {
             position: absolute;
-            top: 47px !important;
-            right: 47px !important;
+            top: 45px !important;
+            right: 32px !important;
         }
 
         a {
@@ -38,14 +38,25 @@
             word-wrap: break-word;
         }
         
-        header.bubble .content {
-            padding: 0 40px;
+        .gray_bubble {
+            text-shadow: 0px 2px 5px rgba(0,0,0,.75);
+            -webkit-font-smoothing: antialiased;
+            background: #38393b;
+            border-radius: 16px;
+            -webkit-box-shadow: inset 0 3px 5px #292a2b,
+                                0 2px 0 rgba(255,255,255,0.14);
+            margin: 20px 20px 0 20px;
+
+        }
+        
+        header {
+            padding: 31px 27px 24px 28px;
         }
         
             header a.title {
                 max-width: 317px;
-                color: #333536;
-                font-size: 38px;
+                color: #fff;
+                font-size: 52px;
                 font-weight: bold;
                 word-wrap: break-word;
                 letter-spacing: -1px;
@@ -57,80 +68,58 @@
             }
             
             header .info {
-                margin: 20px 0 0 0;
+                height: 70px;
+                color: #d8d8d8;
+                font-size: 26px;
+                line-height: 35px;
+                margin: 14px 0 0 0;
+                overflow: hidden;
             }
-                
-                header .info .divider {
-                    height: 2px;
-                    background: #dee0e2;
-                    border-bottom: 2px solid #fff;
-                    margin: 0 0 30px 0;
-                }
-                
-                header .info img.portrait {
-                    width: 98px;
-                    border-radius: 10px;
-                    margin: 3px 30px 20px 0;
-                    float: left;
-                }
-                
-                header .info .body {
-                    height: 98px;
-                    min-height: 98px;
-                    font-size: 26px;
+            
+                header .info {
                     position: relative;
-                    overflow: hidden;
                 }
-                
-                    header .info .body.showing {
+
+                    header .info.showing {
                         height: auto;
                         overflow: visible;
                     }
-                
-                    header .info .body img,
-                    header .info .body br {
-                        display: none;
-                    }
-                    
-                        header .info .body.showing img,
-                        header .info .body.showing br {
-                            max-width: 100%;
-                            display: inline-block;
-                        }
             
-                header .info .body .show_all {
+                header .info .body .show {
                     width: 120px;
                     height: 30px;
                     text-align: right;
-                    background: #f3f6fa;
+                    background: #38393b;
+                    padding: 0 0 5px 0;
                     position: absolute;
-                    bottom: 0;
                     right: 0;
+                    bottom: 0;
                 }    
 
-                    header .info .body.showing .show_all {
-                        bottom: -26px;
+                    header .info.showing .body .show {
+                        width: 24px;
+                        right: -10px;
+                        bottom: -16px;
                     }
             
-                    header .info .body .show_all a {
-                        color: #8c8e90;
-                        font-size: 24px;
+                    header .info .body .show a {
                         font-weight: bold;
                     }
                     
-                    header .info .body .show_all .gradient {
+                    header .info .body .show .gradient {
                         width: 100px;
-                        height: 30px;
-                        background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(255,255,255,0.0)), color-stop(100%,#F3F6FA));
+                        height: 36px;
+                        background: url('http://static.tumblr.com/thpaaos/42wlbflin/gradient.png');
+                        display: block;
                         position: absolute;
                         top: 0;
                         left: -100px;
                     }
                     
-                        header .info .body.showing .gradient {
+                        header .info.showing .body .show .gradient {
                             display: none;
                         }
- 
+
         .bubble {
             display: block;
             width: 608px;
@@ -525,33 +514,35 @@
                     background-image: url('http://static.tumblr.com/thpaaos/IyXlb0h5q/permalink_bottom.png');
                 }
 
-        #pagination {
-            background: url('http://assets.tumblr.com/images/iphone/tumblelog_retina/pagination_bg.png') top left repeat-x #2c2d2e;
-            margin-top: 24px;
+        .load {
+            color: #d8d8d8;
+            font-size: 42px;
+            font-weight: bold;
             text-align: center;
-            font-size: 26px;
-            padding: 32px 30px;
-        }
-            
-            #pagination img {
+            padding: 38px 0;
+            display: block;
+        }    
+
+           .load img {
                 vertical-align: -2px;
-                margin-right: 10px;
+                margin-right: 20px;
             }
             
-            #pagination a, #pagination span {
-                display: inline-block;
-                color: #7a7a7c;
-                border-bottom: 2px solid #7a7a7c;
+        .links {
+            margin: 30px;
+            overflow: hidden;
+        }
+        
+            .links a {
+                color: #aeaeae;
+                font-size: 26px;
+                text-shadow: 0px 2px 5px rgba(0,0,0,.75);
+                float: right;
             }
-            
-            #pagination #load_more,
-            #pagination #loading_more {
-                font-size: 36px;
-                font-weight: bold;
-                color: #ebeef1;
-                border: none;
-                margin-bottom: 30px;
-            }
+
+                .links a:first-child {
+                    float: left;
+                }
     </style>
     <script type="text/javascript" charset="utf-8">
         setTimeout(function() { window.scrollTo(0,1) }, 100);
@@ -615,8 +606,8 @@
             if (loading_next_page) return;
             loading_next_page = true;
             
-            $('loading_more').style.display = 'inline-block';
             $('load_more').style.display = 'none';
+            $('loading_more').style.display = 'block';
             
             if (! current_url) current_url = document.location.href;
             if (current_url.charAt(current_url.length - 1) != '/') current_url += '/';
@@ -628,7 +619,7 @@
             microAjax(current_url, function(res) {
                 $('posts').innerHTML += res.split('<!-- START' + ' POSTS -->')[1].split('<!-- END' + ' POSTS -->')[0];
                 $('loading_more').style.display = 'none';
-                $('load_more').style.display = 'inline-block';
+                $('load_more').style.display = 'block';
                 loading_next_page = false;
             });
         }
@@ -661,20 +652,6 @@
             $('notes_container_' + post_id).style.display = 'none';
         }
         
-        var showing_info = 0;
-        
-        function show_info() {
-            if (showing_info == 0) {
-                $('show_all_link').innerHTML = 'X'
-                $('body_container').className = 'body showing'
-                showing_info = 1;
-            } else {
-                $('show_all_link').innerHTML = 'Show all'
-                $('body_container').className = 'body'
-                showing_info = 0;
-            }
-        }
-        
         function play_audio(post_id) {
             var audio = $('audio_file_' + post_id);
             
@@ -687,6 +664,20 @@
             }
         };
         
+        var showing_info = 0;        
+
+        function show_more_info() {
+            if (showing_info == 0) {
+                $('show_more_info_link').innerHTML = 'X'
+                $('info_container').className = 'info showing'
+                showing_info = 1;
+            } else {
+                $('show_more_info_link').innerHTML = 'Show all'
+                $('info_container').className = 'info'
+                showing_info = 0;
+            }
+        }
+        
         function strip_anchors(input) {
             return input.replace(/<a /g, '<u ').replace(/<\/a>/g, '<\/u>');
         }
@@ -694,26 +685,22 @@
  </head>
  <body>
  
-    <header class="bubble {block:PermalinkPage}permalink{/block:PermalinkPage}{block:IndexPage}description{/block:IndexPage}">
-        <div class="top"></div>
-        <div class="content">
-            <a href="/" class="title">{Title}</a>
-            <div class="clear"></div>
-            {block:IndexPage}
-                <div class="info">
-                    <div class="divider"></div>
-                    <img src="{PortraitURL-96}" class="portrait"/>
-                    <div class="body" id="body_container">
-                        {block:Description}{Description}{/block:Description}
-                        <div class="show_all" id="show_all_link_container">
-                            <div class="gradient" id="show_all_gradient"></div>
-                            <a href="#" onclick="show_info(); return false;" id="show_all_link">Show all</a>
-                        </div>
+    <header class="gray_bubble">
+        <a href="/" class="title">{Title}</a>
+        <div class="clear"></div>
+        {block:IndexPage}
+            <div class="info" id="info_container">
+                <div class="body" id="body_container">
+                    {block:Description}{Description}{/block:Description}
+                    <div class="show" id="show_more_info" style="display:none">
+                        <a href="#" id="show_more_info_link" onclick="show_more_info(); return false;">
+                            Show all
+                        </a>
+                        <div class="gradient" id="show_gradient"></div>
                     </div>
                 </div>
-            {/block:IndexPage}
-        </div>
-        <div class="bottom"></div>
+            </div>
+        {/block:IndexPage}
     </header>
 
     <div id="posts">
@@ -875,6 +862,9 @@
                 #dsq-content .dsq-item-trackback {
                     margin-bottom: 0;
                 }
+                #dsq-global-toolbar {
+                    margin-top: 0 !important;
+                }
             </style>
             <div id="disqus_thread"></div>
             <script type="text/javascript">
@@ -907,12 +897,27 @@
         <!-- END POSTS -->
     </div>
     {block:IndexPage}
-        <div id="pagination">
-            {block:NextPage}<a href="/page/2" onclick="load_more_posts(); return false;" id="load_more">Load more posts</a>
-            <span id="loading_more" style="display:none"><img src="http://assets.tumblr.com/images/loading_2c2d2e.gif" width="16" height="16" /> Loading more posts...</span>{/block:NextPage}
-            <br /><a href="/disable_mobile_interface">Standard view</a>
-        </div>
+        {block:NextPage}
+            <a href="/page/2" class="load gray_bubble" id="load_more" onclick="load_more_posts(); return false;">
+                Load more posts
+            </a>
+            <div class="load gray_bubble" id="loading_more" onclick="load_more_posts(); return false;" style="display:none">
+                <img src="http://static.tumblr.com/thpaaos/HBrlbfdoy/loading.gif" width="32" height="32" /> Loading more posts...
+            </div>
+        {/block:NextPage}
     {/block:IndexPage}
+    <div class="links">
+        <a href="http://www.tumblr.com">Powered by Tumblr</a>
+        <a href="#" onclick="if(confirm('Switch from mobile to standard view?')){currenturl.replace('/disable_mobile_interface')} else {return false;}">Standard view</a>
+    </div>
+    
+    <script type="text/javascript" charset="utf-8">
+        var info_style = window.getComputedStyle(document.getElementById('body_container'), null);
+
+        if (parseInt(info_style.height) > 70) {
+            $('show_more_info').style.display = 'block'
+        }
+    </script>
 <!--IF DISQUS---
 <script type="text/javascript">
 var disqus_shortname = 'DISQUS_SHORTNAME';
