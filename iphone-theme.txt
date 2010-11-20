@@ -28,8 +28,8 @@
 
         iframe#tumblr_controls {
             position: absolute;
-            top: 45px !important;
-            right: 32px !important;
+            top: 51px !important;
+            right: 40px !important;
         }
 
         a {
@@ -60,29 +60,33 @@
                 font-weight: bold;
                 word-wrap: break-word;
                 letter-spacing: -1px;
-                line-height: 36px;
-                vertical-align: 2px;
-                margin: 0 0 8px 0;
+                line-height: 54px;
+                margin: 0 0 5px 0;
                 display: inline-block;
                 float: left;
             }
             
             header .info {
-                height: 70px;
+                max-height: 70px;
                 color: #d8d8d8;
                 font-size: 26px;
                 line-height: 35px;
-                margin: 14px 0 0 0;
                 overflow: hidden;
+                position: relative;
             }
             
-                header .info {
-                    position: relative;
+                header .info.showing {
+                    height: auto;
+                    max-height: 9999px;
+                    overflow: visible;
+                }
+            
+                header .info .body span.description_words {
+                    margin: 22px 0 0 0;
                 }
 
-                    header .info.showing {
-                        height: auto;
-                        overflow: visible;
+                    header .info .body span.description_words:empty {
+                        margin: 0px;
                     }
             
                 header .info .body .show {
@@ -686,12 +690,12 @@
  <body>
  
     <header class="gray_bubble">
-        <a href="/" class="title">{Title}</a>
+        <a href="/" class="title">{Title}&nbsp;</a>
         <div class="clear"></div>
         {block:IndexPage}
             <div class="info" id="info_container">
                 <div class="body" id="body_container">
-                    {block:Description}{Description}{/block:Description}
+                    {block:Description}<span class="description_words">{PlaintextDescription}</span>{/block:Description}
                     <div class="show" id="show_more_info" style="display:none">
                         <a href="#" id="show_more_info_link" onclick="show_more_info(); return false;">
                             Show all
