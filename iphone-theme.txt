@@ -287,27 +287,27 @@
                             margin: 0;
                         }
                         
-                        .bubble .content .video .html_photoset {
+                        .bubble .content .html_photoset {
                             width: 520px;
                             text-align: center;
                             border: none;
                         }
                                                 
-                            .bubble .content .video .html_photoset p {
+                            .bubble .content .html_photoset p {
                                 margin: 30px 0;
                             }
                             
-                            .bubble .content .video .html_photoset p:first-child {
+                            .bubble .content .html_photoset p:first-child {
                                 margin-top: 0;
                             }
                             
-                                .bubble .content .video .html_photoset p img.photoset_photo {
+                                .bubble .content .html_photoset p img.photoset_photo {
                                     width: 520px;
                                     margin: 0 auto;
                                     border: 4px solid #fff;
                                 }
                                 
-                                .bubble .content .video .html_photoset p.photoset_caption {
+                                .bubble .content .html_photoset p.photoset_caption {
                                     margin-top: 20px;
                                 }
                     
@@ -476,30 +476,30 @@
                             color: #303132;
                         }
                         
-                    .bubble .content ol.notes li.like {
-                        background: url('http://assets.tumblr.com/images/iphone/tumblelog_retina/note_like.png') 546px 27px no-repeat;
-                    }
+                        .bubble .content ol.notes li.like {
+                            background: url('http://assets.tumblr.com/images/iphone/tumblelog_retina/note_like.png') 546px 27px no-repeat;
+                        }
                     
-                    .bubble .content ol.notes li.reblog {
-                        background: url('http://assets.tumblr.com/images/iphone/tumblelog_retina/note_reblog.png') 546px 24px no-repeat;
-                    }
+                        .bubble .content ol.notes li.reblog {
+                            background: url('http://assets.tumblr.com/images/iphone/tumblelog_retina/note_reblog.png') 546px 24px no-repeat;
+                        }
                     
-                    .bubble .content ol.notes li.answer {
-                        background: url('http://assets.tumblr.com/images/iphone/tumblelog_retina/note_answer.png') 550px 22px no-repeat;
-                    }
+                        .bubble .content ol.notes li.answer {
+                            background: url('http://assets.tumblr.com/images/iphone/tumblelog_retina/note_answer.png') 550px 22px no-repeat;
+                        }
                     
-                    .bubble .content ol.notes li.facebook_comment {
-                        background: url('http://assets.tumblr.com/images/note_facebook_2.png') 544px 24px no-repeat;
-                    }
+                        .bubble .content ol.notes li.facebook_comment {
+                            background: url('http://assets.tumblr.com/images/note_facebook_2.png') 544px 24px no-repeat;
+                        }
                     
-                    .bubble .content ol.notes li.photo,
-                    .bubble .content ol.notes li.reply {
-                        background: url('http://assets.tumblr.com/images/iphone/tumblelog_retina/note_reply.png') 544px 24px no-repeat;
-                    }
+                        .bubble .content ol.notes li.photo,
+                        .bubble .content ol.notes li.reply {
+                            background: url('http://assets.tumblr.com/images/iphone/tumblelog_retina/note_reply.png') 544px 24px no-repeat;
+                        }
 
-                    .bubble .content ol.notes a.more_notes_link {
-                        font-weight: bold;
-                    }
+                        .bubble .content ol.notes a.more_notes_link {
+                            font-weight: bold;
+                        }
             
             .bubble .bottom {
                 background: url('http://assets.tumblr.com/images/iphone/tumblelog_retina/content_bottom.png') -1px 0 repeat-y transparent;
@@ -672,12 +672,12 @@
 
         function show_more_info() {
             if (showing_info == 0) {
-                $('show_more_info_link').innerHTML = 'X'
-                $('info_container').className = 'info showing'
+                $('show_more_info_link').innerHTML = 'X';
+                $('info_container').className = 'info showing';
                 showing_info = 1;
             } else {
-                $('show_more_info_link').innerHTML = 'Show all'
-                $('info_container').className = 'info'
+                $('show_more_info_link').innerHTML = 'Show all';
+                $('info_container').className = 'info';
                 showing_info = 0;
             }
         }
@@ -686,8 +686,8 @@
             return input.replace(/<a /g, '<u ').replace(/<\/a>/g, '<\/u>');
         }
     </script>
- </head>
- <body>
+</head>
+<body>
  
     <header class="gray_bubble">
         <a href="/" class="title">{Title}&nbsp;</a>
@@ -912,7 +912,7 @@
     {/block:IndexPage}
     <div class="links">
         <a href="http://www.tumblr.com">Powered by Tumblr</a>
-        <a href="#" onclick="if(confirm('Switch from mobile to standard view?')){currenturl.replace('/disable_mobile_interface')} else {return false;}">Standard view</a>
+        <a href="/disable_mobile_interface" onclick="if(confirm('Switch from mobile to standard view?')){} else {return false;}">Standard view</a>
     </div>
     
     <script type="text/javascript" charset="utf-8">
