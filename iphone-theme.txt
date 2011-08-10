@@ -547,6 +547,13 @@
                 .links a:first-child {
                     float: left;
                 }
+
+        body.android .gray_bubble,
+        body.android .audio_player a.play.is_playing,
+        body.android .audio_player img.cover
+         {
+            -webkit-box-shadow: none !important;
+        }
     </style>
     <script type="text/javascript" charset="utf-8">
         setTimeout(function() { window.scrollTo(0,1) }, 100);
@@ -920,6 +927,10 @@
 
         if (parseInt(info_style.height) > 70) {
             $('show_more_info').style.display = 'block'
+        }
+
+        if (navigator.userAgent.match(/Android/i)) {
+            document.body.className = 'android';
         }
     </script>
 <!--IF DISQUS---
